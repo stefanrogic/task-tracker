@@ -37,12 +37,12 @@ public class Task {
     }
 
     public static void help() {
-        System.out.println("Available commands:");
+        System.out.println("\nAvailable commands:");
         System.out.println("list - List all tasks");
         System.out.println("add <task description> - Add a new task");
         System.out.println("delete <task index> - Delete a task by its index");
         System.out.println("complete <task index> - Mark a task as completed");
-        System.out.println("incomplete <task index> - Mark a task as incomplete");
+        System.out.println("todo <task index> - Mark a task as incomplete");
         System.out.println("update <task index> <new description> - Change a task's description");
         System.out.println("exit - Exit the application");
     }

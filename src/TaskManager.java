@@ -42,12 +42,42 @@ public class TaskManager {
                 Task.printTasks();
             }
             case "complete" -> {
-                Task.taskList.getFirst().markAsCompleted();
+                if (commands.length < 2) {
+                    System.out.println("Usage: complete <task index>");
+                    return;
+                }
+                int index;
+                try {
+                    index = Integer.parseInt(commands[1]);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid index.");
+                    return;
+                }
+                if (index < 0 || index >= Task.taskList.size()) {
+                    System.out.println("Invalid task index.");
+                    return;
+                }
+                Task.taskList.get(index).markAsCompleted();
                 Task.saveTasks("tasks.json");
                 Task.printTasks();
             }
-            case "incomplete" -> {
-                Task.taskList.getFirst().markAsIncomplete();
+            case "todo" -> {
+                if (commands.length < 2) {
+                    System.out.println("Usage: todo <task index>");
+                    return;
+                }
+                int index;
+                try {
+                    index = Integer.parseInt(commands[1]);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid index.");
+                    return;
+                }
+                if (index < 0 || index >= Task.taskList.size()) {
+                    System.out.println("Invalid task index.");
+                    return;
+                }
+                Task.taskList.get(index).markAsIncomplete();
                 Task.saveTasks("tasks.json");
                 Task.printTasks();
             }
