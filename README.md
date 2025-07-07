@@ -11,13 +11,6 @@ A simple Java CLI application to manage and track your tasks.
 ### Example
 
 ```
-Current tasks:
-[X] Implement task editing
-[ ] Testing new features
-
-Type 'help' for commands
-task-cli help
-
 Available commands:
 list - List all tasks
 add <task description> - Add a new task
@@ -31,6 +24,28 @@ task-cli complete 1
 Current tasks:
 [X] Implement task editing
 [X] Testing new features
+
+Type 'help' for commands
+
+task-cli add New task
+
+Current tasks:
+[X] Implement task editing
+[X] Testing new features
+[ ] New task
+
+task-cli update 2 Submit this project
+
+Current tasks:
+[X] Implement task editing
+[X] Testing new features
+[ ] Submit this project
+task-cli complete 2
+
+Current tasks:
+[X] Implement task editing
+[X] Testing new features
+[X] Submit this project
 ```
 
 ## Download
