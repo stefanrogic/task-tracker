@@ -7,10 +7,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Task.loadTasks("tasks.json");
         Task.printTasks();
-        System.out.println("Type 'help' for commands");
+        System.out.println("\nType 'help' for commands");
 
         while (!exit) {
-            System.out.print("\ntask-cli ");
+            System.out.print("task-cli ");
             String command = scanner.nextLine().trim();
 
             if (command.contains("exit")) {

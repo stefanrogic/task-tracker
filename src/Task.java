@@ -42,6 +42,7 @@ public class Task {
         System.out.println("add <task description> - Add a new task");
         System.out.println("delete <task index> - Delete a task by its index");
         System.out.println("complete <task index> - Mark a task as completed");
+        System.out.println("incomplete <task index> - Mark a task as incomplete");
         System.out.println("update <task index> <new description> - Change a task's description");
         System.out.println("exit - Exit the application");
     }
