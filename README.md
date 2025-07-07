@@ -11,15 +11,26 @@ A simple Java CLI application to manage and track your tasks.
 ### Example
 
 ```
-$ java -jar TaskTracker.jar
-1. Add Task
-2. Edit Task
-3. Delete Task
-4. List Tasks
-5. Exit
-Select option: 1
-Enter task description: Buy groceries
-Task added.
+Current tasks:
+[X] Implement task editing
+[ ] Testing new features
+
+Type 'help' for commands
+task-cli help
+
+Available commands:
+list - List all tasks
+add <task description> - Add a new task
+delete <task index> - Delete a task by its index
+complete <task index> - Mark a task as completed
+todo <task index> - Mark a task as incomplete
+update <task index> <new description> - Change a task's description
+exit - Exit the application
+task-cli complete 1
+
+Current tasks:
+[X] Implement task editing
+[X] Testing new features
 ```
 
 ## Download
