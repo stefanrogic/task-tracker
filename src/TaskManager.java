@@ -1,4 +1,32 @@
 public class TaskManager {
+    public static void makeChanges() {
+        Task.saveTasks("tasks.json");
+        Task.printTasks();
+    }
+
+    public static int errorHandling(String[] parts, int partSize, String instructionMessage) {
+        if (parts.length < partSize) {
+            System.out.println(instructionMessage);
+            return -1;
+        }
+
+        int index;
+
+        try {
+            index = Integer.parseInt(parts[1]);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
+
+        if (index < 0 || index >= Task.taskList.size()) {
+            System.out.println("Invalid task index");
+            return -1;
+        }
+
+        return index;
+    }
+
     public static void manage(String command) {
         if (command.isEmpty()) {
             return;
@@ -9,77 +37,37 @@ public class TaskManager {
             case "help" -> Task.help();
             case "list" -> Task.printTasks();
             case "add" -> {
-                String description = command.substring(commands[0].length()).trim();
-                Task.taskList.add(new Task(description));
-                Task.saveTasks("tasks.json");
-                Task.printTasks();
+                String[] parts = command.split("\\s+", 2);
+                Task.taskList.add(new Task(parts[1]));
+                makeChanges();
             }
             case "delete" -> {
-                int index = Integer.parseInt(command.substring(commands[0].length()).trim());
+                String[] parts = command.split("\\s+", 2);
+                int index = errorHandling(parts, 2, "Usage: delete <task index>");
+                if(index == -1) return;
                 Task.deleteTask(index);
-                Task.saveTasks("tasks.json");
-                Task.printTasks();
+                makeChanges();
             }
             case "update" -> {
                 String[] parts = command.split("\\s+", 3);
-                if (parts.length < 3) {
-                    System.out.println("Usage: update <index> <new description>");
-                    return;
-                }
-                int index;
-                try {
-                    index = Integer.parseInt(parts[1]);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid index.");
-                    return;
-                }
-                if (index < 0 || index >= Task.taskList.size()) {
-                    System.out.println("Invalid task index.");
-                    return;
-                }
+                int index = errorHandling(parts, 3, "Usage: update <index> <new description>");
+                if(index == -1) return;
                 Task.taskList.get(index).changeDescription(parts[2]);
-                Task.saveTasks("tasks.json");
-                Task.printTasks();
+                makeChanges();
             }
             case "complete" -> {
-                if (commands.length < 2) {
-                    System.out.println("Usage: complete <task index>");
-                    return;
-                }
-                int index;
-                try {
-                    index = Integer.parseInt(commands[1]);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid index.");
-                    return;
-                }
-                if (index < 0 || index >= Task.taskList.size()) {
-                    System.out.println("Invalid task index.");
-                    return;
-                }
+                String[] parts = command.split("\\s+", 2);
+                int index = errorHandling(parts, 2, "Usage: complete <task index>");
+                if(index == -1) return;
                 Task.taskList.get(index).markAsCompleted();
-                Task.saveTasks("tasks.json");
-                Task.printTasks();
+                makeChanges();
             }
             case "todo" -> {
-                if (commands.length < 2) {
-                    System.out.println("Usage: todo <task index>");
-                    return;
-                }
-                int index;
-                try {
-                    index = Integer.parseInt(commands[1]);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid index.");
-                    return;
-                }
-                if (index < 0 || index >= Task.taskList.size()) {
-                    System.out.println("Invalid task index.");
-                    return;
-                }
+                String[] parts = command.split("\\s+", 2);
+                int index = errorHandling(parts, 2, "Usage: todo <task index>");
+                if(index == -1) return;
                 Task.taskList.get(index).markAsIncomplete();
-                Task.saveTasks("tasks.json");
-                Task.printTasks();
+                makeChanges();
             }
             default -> System.out.println("Unknown command: " + commands[0]);
         }
