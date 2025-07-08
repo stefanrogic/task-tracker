@@ -38,7 +38,7 @@ public class TaskManager {
             case "list" -> Task.printTasks();
             case "add" -> {
                 String[] parts = command.split("\\s+", 2);
-                Task.taskList.add(new Task(parts[1]));
+                Task.addTask(parts[1]);
                 makeChanges();
             }
             case "delete" -> {
@@ -52,21 +52,21 @@ public class TaskManager {
                 String[] parts = command.split("\\s+", 3);
                 int index = errorHandling(parts, 3, "Usage: update <index> <new description>");
                 if(index == -1) return;
-                Task.taskList.get(index).changeDescription(parts[2]);
+                Task.updateTask(index, parts[2]);
                 makeChanges();
             }
             case "complete" -> {
                 String[] parts = command.split("\\s+", 2);
                 int index = errorHandling(parts, 2, "Usage: complete <task index>");
                 if(index == -1) return;
-                Task.taskList.get(index).markAsCompleted();
+                Task.completeTask(index);
                 makeChanges();
             }
             case "todo" -> {
                 String[] parts = command.split("\\s+", 2);
                 int index = errorHandling(parts, 2, "Usage: todo <task index>");
                 if(index == -1) return;
-                Task.taskList.get(index).markAsIncomplete();
+                Task.todoTask(index);
                 makeChanges();
             }
             case "exit" -> {

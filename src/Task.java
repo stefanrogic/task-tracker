@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken;
 public class Task {
     private String description;
     private boolean isCompleted;
-
     public static ArrayList<Task> taskList = new ArrayList<>();
 
     public Task(String description) {
@@ -51,12 +50,24 @@ public class Task {
         }
     }
 
+    public static void addTask(String description) {
+        Task.taskList.add(new Task(description));
+    }
+
     public static void deleteTask(int index) {
-        if (index >= 0 && index < Task.taskList.size()) {
             Task.taskList.remove(index);
-        } else {
-            System.out.println("Invalid task index.");
-        }
+    }
+
+    public static void updateTask(int index, String newDescription) {
+        Task.taskList.get(index).changeDescription(newDescription);
+    }
+
+    public static void completeTask(int index) {
+        Task.taskList.get(index).markAsCompleted();
+    }
+
+    public static void todoTask(int index) {
+        Task.taskList.get(index).markAsIncomplete();
     }
 
     public static void saveTasks(String filename) {
