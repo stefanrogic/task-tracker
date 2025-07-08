@@ -21,7 +21,7 @@ Type 'help' for commands
 task-cli help
 
 Available commands:
-list - List all tasks
+list <completed|todo> - List all tasks, completed tasks and incomplete tasks
 add <task description> - Add a new task
 delete <task index> - Delete a task by its index
 complete <task index> - Mark a task as completed

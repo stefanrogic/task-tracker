@@ -35,7 +35,17 @@ public class TaskManager {
         String[] commands = command.split("\\s+");
         switch (commands[0]) {
             case "help" -> Task.help();
-            case "list" -> Task.printTasks();
+            case "list" -> {
+                String[] parts = command.split("\\s+", 2);
+
+                if (parts.length <= 1) {
+                    Task.printTasks();
+                } else if (parts.length == 2 && parts[1].equals("completed")) {
+                    Task.printTasks(parts[1]);
+                } else if (parts.length == 2 && parts[1].equals("todo")) {
+                    Task.printTasks(parts[1]);
+                } else System.out.println("Usage: list <completed|todo>");
+            }
             case "add" -> {
                 String[] parts = command.split("\\s+", 2);
                 Task.addTask(parts[1]);

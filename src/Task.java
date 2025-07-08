@@ -27,6 +27,10 @@ public class Task {
         this.isCompleted = false;
     }
 
+    public boolean getIsCompleted() {
+        return isCompleted;
+    }
+
     public static void help() {
         System.out.println("\nAvailable commands:");
         System.out.println("list - List all tasks");
@@ -48,6 +52,33 @@ public class Task {
                 System.out.println(task);
             }
         }
+    }
+
+    public static void printTasks(String filter) {
+        boolean hasTasks = false;
+
+        // Check if there are tasks that match the filter criteria
+        for(Task task : taskList) {
+            if(task.getIsCompleted() && filter.equals("completed")) {
+                hasTasks = true;
+            } else if(!task.getIsCompleted() && filter.equals("todo")) {
+                hasTasks = true;
+            }
+        }
+
+        if(taskList.isEmpty()) {
+            System.out.println("\nNo " + filter + " tasks available");
+        } else if (hasTasks) {
+            System.out.println("\n" + filter.substring(0, 1).toUpperCase() + filter.substring(1) + " tasks:");
+
+            for(Task task : taskList) {
+                if(task.getIsCompleted() && filter.equals("completed")) {
+                    System.out.println(task);
+                } else if(!task.getIsCompleted() && filter.equals("todo")) {
+                    System.out.println(task);
+                }
+            }
+        } else System.out.println("\nNo " + filter + " tasks available");
     }
 
     public static void addTask(String description) {
