@@ -7,7 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Task.loadTasks("tasks.json");
         Task.printTasks();
-        System.out.println("\nType 'help' for commands");
+        System.out.println("\nType 'help' for list of commands");
 
         while (!exit) {
             System.out.print("task-cli ");

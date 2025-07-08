@@ -9,7 +9,7 @@ public class Task {
     private String description;
     private boolean isCompleted;
 
-    public static ArrayList<Task> taskList = new ArrayList<Task>();
+    public static ArrayList<Task> taskList = new ArrayList<>();
 
     public Task(String description) {
         this.description = description;
