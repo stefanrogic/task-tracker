@@ -16,16 +16,8 @@ public class Task {
         this.isCompleted = false;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void changeDescription(String newDescription) {
         this.description = newDescription;
-    }
-
-    public boolean checkIsCompleted() {
-        return isCompleted;
     }
 
     public void markAsCompleted() {
@@ -50,7 +42,6 @@ public class Task {
     public static void printTasks() {
         if(taskList.isEmpty()) {
             System.out.println("\nNo tasks available");
-            return;
         } else {
             System.out.println("\nCurrent tasks:");
 
