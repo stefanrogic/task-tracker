@@ -40,11 +40,11 @@ public class TaskManager {
 
                 if (parts.length <= 1) {
                     Task.printTasks();
-                } else if (parts.length == 2 && parts[1].equals("completed")) {
+                } else if (parts.length == 2 && parts[1].equals("done")) {
                     Task.printTasks(parts[1]);
                 } else if (parts.length == 2 && parts[1].equals("todo")) {
                     Task.printTasks(parts[1]);
-                } else System.out.println("Usage: list <completed|todo>");
+                } else System.out.println("Usage: list <done|todo>");
             }
             case "add" -> {
                 String[] parts = command.split("\\s+", 2);
@@ -65,9 +65,9 @@ public class TaskManager {
                 Task.updateTask(index, parts[2]);
                 makeChanges();
             }
-            case "complete" -> {
+            case "done" -> {
                 String[] parts = command.split("\\s+", 2);
-                int index = errorHandling(parts, 2, "Usage: complete <task index>");
+                int index = errorHandling(parts, 2, "Usage: done <task index>");
                 if(index == -1) return;
                 Task.completeTask(index);
                 makeChanges();

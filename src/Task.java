@@ -36,7 +36,7 @@ public class Task {
         System.out.println("list - List all tasks");
         System.out.println("add <task description> - Add a new task");
         System.out.println("delete <task index> - Delete a task by its index");
-        System.out.println("complete <task index> - Mark a task as completed");
+        System.out.println("done <task index> - Mark a task as done");
         System.out.println("todo <task index> - Mark a task as incomplete");
         System.out.println("update <task index> <new description> - Change a task's description");
         System.out.println("exit - Exit the application");
@@ -59,7 +59,7 @@ public class Task {
 
         // Check if there are tasks that match the filter criteria
         for(Task task : taskList) {
-            if(task.getIsCompleted() && filter.equals("completed")) {
+            if(task.getIsCompleted() && filter.equals("done")) {
                 hasTasks = true;
             } else if(!task.getIsCompleted() && filter.equals("todo")) {
                 hasTasks = true;
@@ -72,7 +72,7 @@ public class Task {
             System.out.println("\n" + filter.substring(0, 1).toUpperCase() + filter.substring(1) + " tasks:");
 
             for(Task task : taskList) {
-                if(task.getIsCompleted() && filter.equals("completed")) {
+                if(task.getIsCompleted() && filter.equals("done")) {
                     System.out.println(task);
                 } else if(!task.getIsCompleted() && filter.equals("todo")) {
                     System.out.println(task);
