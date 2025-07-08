@@ -69,6 +69,10 @@ public class TaskManager {
                 Task.taskList.get(index).markAsIncomplete();
                 makeChanges();
             }
+            case "exit" -> {
+                System.out.println("Exiting the application");
+                System.exit(0);
+            }
             default -> System.out.println("Unknown command: " + commands[0]);
         }
     }

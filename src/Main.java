@@ -12,14 +12,6 @@ public class Main {
         while (!exit) {
             System.out.print("task-cli ");
             String command = scanner.nextLine().trim();
-
-            if (command.isEmpty()) continue;
-            if (command.contains("exit")) {
-                exit = true;
-                System.out.println("Exiting the application");
-                continue;
-            }
-
             TaskManager.manage(command);
         }
         scanner.close();
