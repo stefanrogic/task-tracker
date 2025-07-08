@@ -14,6 +14,6 @@ public class Main {
             String command = scanner.nextLine().trim();
             TaskManager.manage(command);
         }
-
+        scanner.close();
     }
 }
